@@ -24,6 +24,7 @@ a:hover {
 
 /* ===== Header & Navbar (Flexbox) ===== */
 
+
 header {
     background-color: #1d5b8a;
     color: #fff;
@@ -145,6 +146,7 @@ td button:last-of-type {
     background-color: #d9534f;
     color: #fff;
 }
+
 
 /* ===== Form ===== */
 
