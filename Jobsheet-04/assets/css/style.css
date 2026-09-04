@@ -288,3 +288,32 @@ pre {
         max-width: 1200px;
     }
 }
+
+/* ===== Login ===== */
+
+.login-page {
+    display: flex;
+    justify-content: center;
+}
+
+.login-section {
+    width: 100%;
+    max-width: 400px;
+}
+
+.login-section h2 {
+    text-align: center;
+}
+
+.login-section form {
+    width: 100%;
+}
+
+.login-section input {
+    width: 100%;
+    max-width: 100%;
+}
+
+.login-section button[type="submit"] {
+    width: 100%;
+}

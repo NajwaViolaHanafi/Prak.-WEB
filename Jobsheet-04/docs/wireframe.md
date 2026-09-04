@@ -1,5 +1,5 @@
 ````markdown
-## 3. Struktur Navigasi
+## 1. Struktur Navigasi
 
 Struktur navigasi sistem informasi perpustakaan adalah sebagai berikut:
 
@@ -20,7 +20,7 @@ Dashboard Petugas
 
 ---
 
-## 4. Wireframe Login
+## 2. Wireframe Login
 
 ```text
 +----------------------------------+
@@ -45,7 +45,7 @@ Halaman login digunakan oleh petugas untuk masuk ke dalam sistem. Petugas mengis
 
 ---
 
-## 5. Wireframe Dashboard Petugas
+## 3. Wireframe Dashboard Petugas
 
 ```text
 +------------------------------------------------+
@@ -64,21 +64,20 @@ Halaman login digunakan oleh petugas untuk masuk ke dalam sistem. Petugas mengis
 |                                                |
 | Aktivitas Terbaru                              |
 | +--------------------------------------------+ |
-| | No | Anggota | Buku | Aktivitas | Tanggal | |
+| | No | Anggota | Buku | Aktivitas | Tanggal |  |
 | +--------------------------------------------+ |
-| | 1  | ...     | ...  | ...       | ...     | |
-| | 2  | ...     | ...  | ...       | ...     | |
+| | 1  | ...     | ...  | ...       | ...     |  |
+| | 2  | ...     | ...  | ...       | ...     |  |
 | +--------------------------------------------+ |
 +------------------------------------------------+
 ```
-
 ### Keterangan
 
 Dashboard merupakan halaman utama petugas setelah berhasil login. Dashboard menampilkan informasi singkat seperti jumlah buku, jumlah anggota, jumlah buku yang sedang dipinjam, serta menu untuk mengakses fitur utama.
 
 ---
 
-## 6. Wireframe Peminjaman
+## 4. Wireframe Peminjaman
 
 ```text
 +------------------------------------------------+
@@ -90,7 +89,7 @@ Dashboard merupakan halaman utama petugas setelah berhasil login. Dashboard mena
 | Anggota                                        |
 | [ Pilih Anggota             v ]                |
 |                                                |
-| Buku                                            |
+| Buku                                           |
 | [ Pilih Buku                v ]                |
 |                                                |
 | Tanggal Peminjaman                             |
@@ -114,7 +113,7 @@ Halaman peminjaman digunakan petugas untuk mencatat transaksi peminjaman buku. P
 
 ---
 
-## 7. Wireframe Pengembalian
+## 5. Wireframe Pengembalian
 
 ```text
 +------------------------------------------------+
@@ -145,7 +144,7 @@ Halaman pengembalian digunakan petugas untuk memproses buku yang dikembalikan. P
 
 ---
 
-## 8. Wireframe Riwayat
+## 6. Wireframe Riwayat
 
 ```text
 +------------------------------------------------+
@@ -158,11 +157,11 @@ Halaman pengembalian digunakan petugas untuk memproses buku yang dikembalikan. P
 | [ Semua Aktivitas v ] [ Tanggal ] [ Cari ]     |
 |                                                |
 | +--------------------------------------------+ |
-| | No | Anggota | Buku | Aktivitas | Tanggal | |
+| | No | Anggota | Buku | Aktivitas | Tanggal |  |
 | +--------------------------------------------+ |
-| | 1  | ...     | ...  | Peminjaman| ...     | |
-| | 2  | ...     | ...  | Pengembalian| ...   | |
-| | 3  | ...     | ...  | Peminjaman| ...     | |
+| | 1  | ...     | ...  | Peminjaman| ...     |  |
+| | 2  | ...     | ...  | Pengembalian| ...   |  |
+| | 3  | ...     | ...  | Peminjaman| ...     |  |
 | +--------------------------------------------+ |
 +------------------------------------------------+
 ```
@@ -173,7 +172,7 @@ Halaman riwayat digunakan petugas untuk melihat transaksi peminjaman dan pengemb
 
 ---
 
-## 9. User Flow Login
+## 7. User Flow Login
 
 ```text
 Mulai
@@ -200,7 +199,7 @@ Validasi Data
 
 ---
 
-## 10. User Flow Peminjaman
+## 8. User Flow Peminjaman
 
 ```text
 Dashboard
@@ -232,7 +231,7 @@ Riwayat Diperbarui
 
 ---
 
-## 11. User Flow Pengembalian
+## 9. User Flow Pengembalian
 
 ```text
 Dashboard
@@ -261,7 +260,7 @@ Riwayat Diperbarui
 
 ---
 
-## 12. User Flow Riwayat
+## 10. User Flow Riwayat
 
 ```text
 Dashboard
@@ -284,7 +283,7 @@ Petugas Melihat Riwayat
 
 ---
 
-## 13. User Flow Keseluruhan
+## 11. User Flow Keseluruhan
 
 ```text
                     +---------+
@@ -311,13 +310,88 @@ Petugas Melihat Riwayat
                  |
                  v
               RIWAYAT
-```
 
----
+6.4 Ide Latihan Tambahan (Opsional)
 
-## 14. Kesimpulan
+1. ## Wireframe Registrasi Anggota Baru
 
-Wireframe ini digunakan sebagai rancangan awal untuk pengembangan Sistem Informasi Perpustakaan. Rancangan mencakup halaman Login, Dashboard Petugas, Peminjaman, Pengembalian, dan Riwayat.
+Aktor: Tamu
 
-Wireframe ini akan menjadi acuan dalam pengembangan tampilan dan fitur pada jobsheet berikutnya.
++------------------------------------------+
+|        PERPUSTAKAAN - REGISTRASI         |
++------------------------------------------+
+|                                          |
+| Nama Lengkap                             |
+| [____________________________]           |
+|                                          |
+| NIM / ID Anggota                         |
+| [____________________________]           |
+|                                          |
+| Email                                    |
+| [____________________________]           |
+|                                          |
+| Password                                 |
+| [____________________________]           |
+|                                          |
+| Konfirmasi Password                      |
+| [____________________________]           |
+|                                          |
+|              [ Daftar ]                  |
+|                                          |
+| Sudah punya akun? [ Login ]              |
++------------------------------------------
+Keterangan:
+Halaman ini digunakan oleh Tamu untuk melakukan registrasi sebagai anggota perpustakaan. Tamu mengisi data diri, email, dan password kemudian menekan tombol Daftar.
 
+2. Tambahkan user flow baru
+Contohnya skenario: Petugas mencari anggota yang tunggakannya sudah lewat jatuh tempo.
+
+## User Flow - Mencari Anggota dengan Tunggakan
+
+Petugas Login
+     |
+     v
+Dashboard Petugas
+     |
+     v
+Menu Anggota
+     |
+     v
+Pilih "Cari Anggota"
+     |
+     v
+Masukkan nama / ID anggota
+     |
+     v
+Sistem mencari data anggota
+     |
+     +----------------------+
+     |                      |
+     v                      v
+Anggota ditemukan       Tidak ditemukan
+     |                      |
+     v                      v
+Tampilkan data          Tampilkan pesan
+tunggakan               "Data tidak ditemukan"
+     |
+     v
+Petugas melihat
+detail tunggakan
+
+3. ## Edge Case Tambahan
+
+A. Peminjaman buku yang sama dua kali
+
+Jika Petugas mencoba meminjamkan buku yang sama kepada anggota yang sama dua kali berturut-turut, sistem harus memeriksa status peminjaman sebelumnya. Jika buku tersebut masih dalam status dipinjam oleh anggota yang sama, sistem menolak transaksi kedua dan menampilkan pesan: "Anggota masih meminjam buku ini." Petugas harus mengembalikan buku terlebih dahulu sebelum melakukan peminjaman kembali.
+
+B. Registrasi dengan NIM yang sudah terdaftar
+
+Jika Tamu melakukan registrasi menggunakan NIM yang sudah terdaftar, sistem menolak registrasi dan menampilkan pesan bahwa NIM tersebut sudah digunakan.
+
+C. Password dan konfirmasi password berbeda
+
+Jika password dan konfirmasi password tidak sama, sistem menolak registrasi dan meminta pengguna mengisi ulang password.
+
+D. Pencarian anggota tidak ditemukan
+
+Jika Petugas mencari anggota berdasarkan nama atau ID tetapi data tidak ditemukan, sistem menampilkan pesan "Data anggota tidak ditemukan."
