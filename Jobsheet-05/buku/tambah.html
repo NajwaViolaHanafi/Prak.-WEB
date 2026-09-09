@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="id">
 
@@ -14,8 +15,10 @@
 
     <header>
         <h1>SIMPUS-Mini</h1>
-        <input type="checkbox" id="nav-toggle" class="nav-toggle">
-    <label for="nav-toggle" class="nav-toggle-label">&#9776;</label>
+
+        <button type="button" id="nav-toggle-btn" class="nav-toggle-label">
+            &#9776;
+        </button>
 
         <nav>
             <ul>
@@ -31,7 +34,7 @@
         <section>
             <h2>Tambah Buku</h2>
 
-            <form>
+            <form id="form-tambah">
 
                 <p>
                     <label for="judul">Judul</label><br>
@@ -45,8 +48,7 @@
 
                 <p>
                     <label for="tahun">Tahun Terbit</label><br>
-                    <input type="number" id="tahun" name="tahun"
-                        min="1900" max="2026" required>
+                    <input type="number" id="tahun" name="tahun" min="1900" max="2026" required>
                 </p>
 
                 <p>
@@ -56,8 +58,7 @@
 
                 <p>
                     <label for="stok">Stok</label><br>
-                    <input type="number" id="stok" name="stok"
-                        min="0" required>
+                    <input type="number" id="stok" name="stok" min="0" required>
                 </p>
 
                 <p>
@@ -65,7 +66,7 @@
 
                     <select id="kategori" name="kategori">
                         <option value="fiksi">Fiksi</option>
-                        <option valaue="non-fiksi">Non-Fiksi</option>
+                        <option value="non-fiksi">Non-Fiksi</option>
                         <option value="referensi">Referensi</option>
                     </select>
                 </p>
@@ -79,8 +80,11 @@
     </main>
 
     <footer>
-        <p>&copy; 2026 SIMPUS-Mini &mdash; Jobsheet 3</p>
+        <p>&copy; 2026 SIMPUS-Mini &mdash; Jobsheet 5</p>
     </footer>
 
+    <script src="../assets/js/app.js"></script>
+
 </body>
+
 </html>

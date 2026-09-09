@@ -155,7 +155,6 @@ td button:last-of-type {
     color: #fff;
 }
 
-
 /* ===== Form ===== */
 
 form p {
@@ -193,6 +192,15 @@ form button[type="submit"]:hover {
     background-color: #164869;
 }
 
+/* ===== Pesan Error Validasi ===== */
+
+.error {
+    display: block;
+    margin-top: 0.35rem;
+    color: #d9534f;
+    font-size: 0.9rem;
+}
+
 /* ===== Footer ===== */
 
 footer {
@@ -203,26 +211,32 @@ footer {
 }
 
 /* ===== Tabel Responsif ===== */
+
 .table-responsive {
     overflow-x: auto;
 }
 
 /* ===== Blok Kode Responsif ===== */
+
 pre {
     overflow-x: auto;
     max-width: 100%;
 }
 
-/* ===== Hamburger Menu (checkbox hack) ===== */
-.nav-toggle {
-    display: none;
-}
+/* ===== Hamburger Menu (JavaScript) ===== */
 
 .nav-toggle-label {
-    display: none;
+    display: block;
     font-size: 1.6rem;
     color: #fff;
+    background: none;
+    border: none;
     cursor: pointer;
+}
+
+/* Menu terbuka ketika JavaScript menambahkan class nav-open */
+header nav.nav-open {
+    display: block;
 }
 
 /* ===== Mobile-First Responsive ===== */
@@ -284,6 +298,7 @@ pre {
 }
 
 @media (min-width: 1400px) {
+
     main {
         max-width: 1200px;
     }
