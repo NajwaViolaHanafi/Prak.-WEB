@@ -141,10 +141,21 @@ function initHapusConfirm() {
 }
 
 
-// ===== Jalankan JavaScript =====
+function initMuatUlang() {
+    const btnMuatUlang = document.getElementById("btn-muat-ulang");
+
+    if (!btnMuatUlang) return;
+
+    btnMuatUlang.addEventListener("click", function () {
+        muatDaftarBuku();
+    });
+}
+
+
 document.addEventListener("DOMContentLoaded", function () {
     initNavToggle();
     initValidasiForm();
     initTableFilter();
     initHapusConfirm();
+    initMuatUlang();
 });
