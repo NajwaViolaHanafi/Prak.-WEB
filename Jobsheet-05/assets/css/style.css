@@ -234,9 +234,22 @@ pre {
     cursor: pointer;
 }
 
-/* Menu terbuka ketika JavaScript menambahkan class nav-open */
-header nav.nav-open {
+header nav {
     display: block;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition:
+        max-height 0.3s ease,
+        opacity 0.3s ease,
+        transform 0.3s ease;
+}
+
+header nav.nav-open {
+    max-height: 300px;
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* ===== Mobile-First Responsive ===== */
@@ -277,6 +290,12 @@ header nav.nav-open {
         width: auto;
         order: initial;
         margin-top: 0;
+
+        max-height: none;
+        opacity: 1;
+        transform: none;
+        overflow: visible;
+        transition: none;
     }
 
     header nav ul {

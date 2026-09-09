@@ -38,32 +38,48 @@ function initValidasiForm() {
     form.addEventListener("submit", function (e) {
         let valid = true;
 
-        // Validasi Judul Buku / Nama Anggota
-        const judul = form.querySelector("[name='judul']");
-        const nama = form.querySelector("[name='nama']");
+        const fieldWajib = [
+            "judul",
+            "pengarang",
+            "nama",
+            "no_anggota"
+        ];
 
-        if (judul && judul.value.trim() === "") {
-            tampilkanError(judul, "Judul wajib diisi.");
-            valid = false;
-        } else if (judul) {
-            hapusError(judul);
-        }
+        fieldWajib.forEach(function (namaField) {
+            const input = form.querySelector("[name='" + namaField + "']");
 
-        if (nama && nama.value.trim() === "") {
-            tampilkanError(nama, "Nama wajib diisi.");
-            valid = false;
-        } else if (nama) {
-            hapusError(nama);
-        }
+            if (input && input.value.trim() === "") {
+                tampilkanError(
+                    input,
+                    namaField === "no_anggota"
+                        ? "No. Anggota wajib diisi."
+                        : namaField.charAt(0).toUpperCase() +
+                        namaField.slice(1) +
+                        " wajib diisi."
+                );
 
-        // Validasi Pengarang
-        const pengarang = form.querySelector("[name='pengarang']");
+                valid = false;
+            } else if (input) {
+                hapusError(input);
+            }
+        });
 
-        if (pengarang && pengarang.value.trim() === "") {
-            tampilkanError(pengarang, "Pengarang wajib diisi.");
-            valid = false;
-        } else if (pengarang) {
-            hapusError(pengarang);
+        const isbn = form.querySelector("[name='isbn']");
+
+        if (isbn && isbn.value.trim() !== "") {
+            const polaISBN = /^[0-9-]+$/;
+
+            if (!polaISBN.test(isbn.value.trim())) {
+                tampilkanError(
+                    isbn,
+                    "ISBN hanya boleh berisi angka dan tanda hubung (-)."
+                );
+                valid = false;
+            } else {
+                hapusError(isbn);
+            }
+        } else if (isbn) {
+            hapusError(isbn);
         }
 
         // Validasi Tahun
@@ -81,19 +97,6 @@ function initValidasiForm() {
             } else {
                 hapusError(tahun);
             }
-        }
-
-        // Validasi No. Anggota
-        const noAnggota = form.querySelector("[name='no_anggota']");
-
-        if (noAnggota && noAnggota.value.trim() === "") {
-            tampilkanError(
-                noAnggota,
-                "No. Anggota wajib diisi."
-            );
-            valid = false;
-        } else if (noAnggota) {
-            hapusError(noAnggota);
         }
 
         if (!valid) {
@@ -115,12 +118,27 @@ function initTableFilter() {
         const rows = table.querySelectorAll("tbody tr");
 
         rows.forEach(function (row) {
-            const teks = row.textContent.toLowerCase();
+
+            const kolomJudul = row.querySelector("td");
+            const teks = kolomJudul
+                ? kolomJudul.textContent.toLowerCase()
+                : "";
 
             row.style.display = teks.includes(keyword)
                 ? ""
                 : "none";
         });
+        const jumlahTersisa = Array.from(rows).filter(function (row) {
+            return row.style.display !== "none";
+        }).length;
+
+        const counter = document.getElementById("jumlah-data");
+
+        if (counter) {
+            counter.textContent =
+                "Menampilkan " + jumlahTersisa +
+                " dari " + rows.length + " buku";
+        }
     });
 }
 
@@ -135,6 +153,18 @@ function initHapusConfirm() {
 
             if (yakin && row) {
                 row.remove();
+
+                const rows = document.querySelectorAll(
+                    ".table-responsive table tbody tr"
+                );
+
+                const counter = document.getElementById("jumlah-data");
+
+                if (counter) {
+                    counter.textContent =
+                        "Menampilkan " + rows.length +
+                        " dari " + rows.length + " buku";
+                }
             }
         });
     });
