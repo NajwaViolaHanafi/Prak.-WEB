@@ -1,0 +1,20 @@
+[
+    {
+        "nama": "Alya Putri",
+        "no_anggota": "A001",
+        "alamat": "Malang",
+        "no_hp": "081234567890"
+    },
+    {
+        "nama": "Bima Pratama",
+        "no_anggota": "A002",
+        "alamat": "Kediri",
+        "no_hp": "082345678901"
+    },
+    {
+        "nama": "Citra Lestari",
+        "no_anggota": "A003",
+        "alamat": "Blitar",
+        "no_hp": "083456789012"
+    }
+]

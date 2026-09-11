@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="../assets/css/style.css">
+
+    <title>Daftar Buku | SIMPUS-Mini</title>
+</head>
+
+<body>
+
+    <header>
+        <h1>SIMPUS-Mini</h1>
+
+        <button type="button" id="nav-toggle-btn" class="nav-toggle-label">
+            &#9776;
+        </button>
+
+        <nav>
+            <ul>
+                <li><a href="../index.html">Beranda</a></li>
+                <li><a href="list.html">Daftar Buku</a></li>
+                <li><a href="tambah.html">Tambah Buku</a></li>
+                <li><a href="../anggota/list.html">Daftar Anggota</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>Daftar Buku</h2>
+
+            <button type="button" id="btn-muat-ulang">Muat Ulang</button>
+            <p id="loading">Memuat data...</p>
+
+            <p>
+                <label for="search-input">Cari Buku</label>
+                <input type="text" id="search-input" placeholder="Cari berdasarkan judul...">
+            </p>
+
+            <p id="jumlah-data">Menampilkan 10 dari 10 buku</p>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Judul</th>
+                            <th>Pengarang</th>
+                            <th>Tahun</th>
+                            <th>Stok</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="daftar-buku">
+                    </tbody>
+                </table>
+            </div>
+
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 SIMPUS-Mini &mdash; Jobsheet 5</p>
+    </footer>
+
+    <script src="../assets/js/app.js"></script>
+
+</body>
+
+</html>

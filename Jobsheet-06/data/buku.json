@@ -1,0 +1,62 @@
+[
+    {
+        "judul": "Laskar Pelangi",
+        "pengarang": "Andrea Hirata",
+        "tahun": 2005,
+        "stok": 5
+    },
+    {
+        "judul": "Bumi",
+        "pengarang": "Tere Liye",
+        "tahun": 2014,
+        "stok": 3
+    },
+    {
+        "judul": "Negeri 5 Menara",
+        "pengarang": "Ahmad Fuadi",
+        "tahun": 2009,
+        "stok": 4
+    },
+    {
+        "judul": "Perahu Kertas",
+        "pengarang": "Dee Lestari",
+        "tahun": 2009,
+        "stok": 2
+    },
+    {
+        "judul": "Pulang",
+        "pengarang": "Tere Liye",
+        "tahun": 2015,
+        "stok": 6
+    },
+    {
+        "judul": "Bumi Manusia",
+        "pengarang": "Pramoedya Ananta Toer",
+        "tahun": 1980,
+        "stok": 3
+    },
+    {
+        "judul": "Dilan 1990",
+        "pengarang": "Pidi Baiq",
+        "tahun": 2014,
+        "stok": 5
+    },
+    {
+        "judul": "Ayah",
+        "pengarang": "Andrea Hirata",
+        "tahun": 2015,
+        "stok": 2
+    },
+    {
+        "judul": "Ronggeng Dukuh Paruk",
+        "pengarang": "Ahmad Tohari",
+        "tahun": 1982,
+        "stok": 4
+    },
+    {
+        "judul": "Cantik Itu Luka",
+        "pengarang": "Eka Kurniawan",
+        "tahun": 2002,
+        "stok": 3
+    }
+]
