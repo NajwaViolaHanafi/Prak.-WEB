@@ -3,60 +3,79 @@
         "judul": "Laskar Pelangi",
         "pengarang": "Andrea Hirata",
         "tahun": 2005,
-        "stok": 5
+        "stok": 5,
+        "kategori": "Novel" 
     },
+
     {
         "judul": "Bumi",
         "pengarang": "Tere Liye",
         "tahun": 2014,
-        "stok": 3
+        "stok": 3,
+        "kategori": "Novel"
     },
+
     {
         "judul": "Negeri 5 Menara",
         "pengarang": "Ahmad Fuadi",
         "tahun": 2009,
-        "stok": 4
+        "stok": 4,
+        "kategori": "Novel"
     },
+
     {
         "judul": "Perahu Kertas",
         "pengarang": "Dee Lestari",
         "tahun": 2009,
-        "stok": 2
+        "stok": 2,
+        "kategori": "Novel"
     },
+
     {
         "judul": "Pulang",
         "pengarang": "Tere Liye",
         "tahun": 2015,
-        "stok": 6
+        "stok": 6,
+        "kategori": "Novel"
     },
+
     {
         "judul": "Bumi Manusia",
         "pengarang": "Pramoedya Ananta Toer",
         "tahun": 1980,
-        "stok": 3
+        "stok": 3,
+        "kategori": "Sejarah"
     },
+
     {
         "judul": "Dilan 1990",
         "pengarang": "Pidi Baiq",
         "tahun": 2014,
-        "stok": 5
+        "stok": 5,
+        "kategori": "Romansa"
     },
+
     {
         "judul": "Ayah",
         "pengarang": "Andrea Hirata",
         "tahun": 2015,
-        "stok": 2
+        "stok": 2,
+        "kategori": "Novel"
     },
+
     {
         "judul": "Ronggeng Dukuh Paruk",
         "pengarang": "Ahmad Tohari",
         "tahun": 1982,
-        "stok": 4
+        "stok": 4,
+        "kategori": "Novel"
     },
+
     {
         "judul": "Cantik Itu Luka",
         "pengarang": "Eka Kurniawan",
         "tahun": 2002,
-        "stok": 3
+        "stok": 3,
+        "kategori": "Novel"
     }
 ]

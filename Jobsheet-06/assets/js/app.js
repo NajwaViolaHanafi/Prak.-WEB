@@ -145,154 +145,83 @@ function initTableFilter() {
 
 // ===== Konfirmasi Hapus =====
 function initHapusConfirm() {
-    document.querySelectorAll(".btn-hapus").forEach(function (btn) {
-        btn.addEventListener("click", function () {
-            const row = btn.closest("tr");
+    document.addEventListener("click", function (e) {
+        console.log(e.target);
+        const btn = e.target.closest(".btn-hapus");
 
-            const yakin = confirm("Yakin ingin menghapus data ini?");
+        if (!btn) return;
+        const row = btn.closest("tr");
+        const yakin = confirm("Yakin ingin menghapus data ini?");
 
-            if (yakin && row) {
-                row.remove();
-
-                const rows = document.querySelectorAll(
-                    ".table-responsive table tbody tr"
-                );
-
-                const counter = document.getElementById("jumlah-data");
-
-                if (counter) {
-                    counter.textContent =
-                        "Menampilkan " + rows.length +
-                        " dari " + rows.length + " buku";
-                }
+        if (yakin && row) {
+            row.remove();
+            const rows = document.querySelectorAll(
+                ".table-responsive table tbody tr"
+            );
+            const counter = document.getElementById("jumlah-data");
+            if (counter) {
+                counter.textContent =
+                    "Menampilkan " + rows.length +
+                    " dari " + rows.length + " buku";
             }
-        });
+        }
     });
 }
 
-// ===== Muat Data Buku dari JSON =====
-async function muatDaftarBuku() {
-    const tbody = document.getElementById("daftar-buku");
-    const loading = document.getElementById("loading");
-
+async function muatDataJSON(namaFile, daftarKunci, idTbody, idLoading) {
+    const tbody = document.getElementById(idTbody);
+    const loading = document.getElementById(idLoading);
     if (!tbody || !loading) return;
-
     loading.style.display = "block";
 
     try {
-        const response = await fetch("../data/buku.json");
-
+        const response = await fetch(namaFile);
         if (!response.ok) {
             throw new Error("Gagal memuat data");
         }
 
         const data = await response.json();
-
         setTimeout(function () {
             tbody.innerHTML = "";
-
-            data.forEach(function (buku) {
+            data.forEach(function (item) {
                 const row = document.createElement("tr");
+                daftarKunci.forEach(function (kunci) {
+                    const cell = document.createElement("td");
+                    cell.textContent = item[kunci];
+                    row.appendChild(cell);
+                });
 
-                row.innerHTML = `
-                    <td>${buku.judul}</td>
-                    <td>${buku.pengarang}</td>
-                    <td>${buku.tahun}</td>
-                    <td>${buku.stok}</td>
-                    <td>
-                        <button type="button" class="btn-hapus">
-                            Hapus
-                        </button>
-                    </td>
-                `;
-
+                const cellAksi = document.createElement("td");
+                
+                const btnEdit = document.createElement("button");
+                btnEdit.type = "button";
+                btnEdit.className = "btn-edit";
+                btnEdit.textContent = "Edit";
+                const btnHapus = document.createElement("button");
+                btnHapus.type = "button";
+                btnHapus.className = "btn-hapus";
+                btnHapus.textContent = "Hapus";
+                cellAksi.appendChild(btnEdit);
+                cellAksi.appendChild(btnHapus);
+                row.appendChild(cellAksi);
                 tbody.appendChild(row);
             });
 
             loading.style.display = "none";
-
-            const counter = document.getElementById("jumlah-data");
-
-            if (counter) {
-                counter.textContent =
-                    "Menampilkan " + data.length +
-                    " dari " + data.length + " buku";
-            }
-
             initHapusConfirm();
-
-        }, 1000);
+        }, 3000);
 
     } catch (error) {
         loading.style.display = "none";
-
         tbody.innerHTML = `
             <tr>
-                <td colspan="5">Gagal memuat data</td>
+                <td colspan="${daftarKunci.length + 1}">
+                    Gagal memuat data
+                </td>
             </tr>
         `;
     }
 }
-
-// ===== Muat Data Anggota dari JSON =====
-async function muatDaftarAnggota() {
-    const tbody = document.getElementById("daftar-anggota");
-    const loading = document.getElementById("loading-anggota");
-
-    if (!tbody || !loading) return;
-
-    loading.style.display = "block";
-
-    try {
-        const response = await fetch("../data/anggota.json");
-
-        if (!response.ok) {
-            throw new Error("Gagal memuat data");
-        }
-
-        const data = await response.json();
-
-        setTimeout(function () {
-            tbody.innerHTML = "";
-
-            data.forEach(function (anggota) {
-                const row = document.createElement("tr");
-
-                row.innerHTML = `
-                    <td>${anggota.no_anggota}</td>
-                    <td>${anggota.nama}</td>
-                    <td>${anggota.alamat}</td>
-                    <td>${anggota.no_hp}</td>
-                    <td>
-                        <button type="button" class="btn-edit">
-                            Edit
-                        </button>
-                        <button type="button" class="btn-hapus">
-                            Hapus
-                        </button>
-                    </td>
-                `;
-
-                tbody.appendChild(row);
-            });
-
-            loading.style.display = "none";
-
-            initHapusConfirm();
-
-        }, 1000);
-
-    } catch (error) {
-        loading.style.display = "none";
-
-        tbody.innerHTML = `
-            <tr>
-                <td colspan="5">Gagal memuat data</td>
-            </tr>
-        `;
-    }
-}
-
 
 function initMuatUlang() {
     const btnMuatUlang = document.getElementById("btn-muat-ulang");
@@ -313,10 +242,20 @@ document.addEventListener("DOMContentLoaded", function () {
     initMuatUlang();
 
     if (document.getElementById("daftar-buku")) {
-        muatDaftarBuku();
+        muatDataJSON(
+            "../data/buku.json",
+            ["judul", "pengarang", "tahun", "stok", "kategori"],
+            "daftar-buku",
+            "loading"
+        );
     }
 
     if (document.getElementById("daftar-anggota")) {
-        muatDaftarAnggota();
+        muatDataJSON(
+            "../data/anggota.json",
+            ["no_anggota", "nama", "alamat", "no_hp"],
+            "daftar-anggota",
+            "loading-anggota"
+        );
     }
 });
