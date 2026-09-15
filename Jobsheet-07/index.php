@@ -2,6 +2,12 @@
 $page_title = "Beranda";
 include __DIR__ . '/includes/header.php';
 
+if (isset($_POST['reset'])) { 
+    session_destroy();       
+    header('Location: index.php'); 
+    exit;                    
+}
+
 $totalBuku = count($_SESSION['buku'] ?? []);
 $totalAnggota = count($_SESSION['anggota'] ?? []);
 ?>
@@ -29,5 +35,13 @@ $totalAnggota = count($_SESSION['anggota'] ?? []);
         <p>0</p>
     </article>
 </section>
+
+<section> 
+    <h2>Reset Data</h2> 
+
+    <form method="post"> 
+        <button type="submit" name="reset">Reset Data</button> 
+    </form> 
+</section> 
 
 <?php include __DIR__ . '/includes/footer.php'; ?>
