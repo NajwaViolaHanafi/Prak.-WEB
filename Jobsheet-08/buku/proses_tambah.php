@@ -40,18 +40,22 @@ if (!empty($errors)) {
     exit;
 }
 
-if (!isset($_SESSION['buku'])) {
-    $_SESSION['buku'] = [];
-}
+require __DIR__ . '/../includes/koneksi.php';
 
-$_SESSION['buku'][] = [
+$stmt = $pdo->prepare(
+    "INSERT INTO buku (judul, pengarang, tahun, isbn, stok, kategori)
+     VALUES (:judul, :pengarang, :tahun, :isbn, :stok, :kategori)
+     RETURNING id"
+);
+
+$stmt->execute([
     'judul' => $judul,
     'pengarang' => $pengarang,
-    'tahun' => (int) $tahun,
+    'tahun' => (int)$tahun,
     'isbn' => $isbn,
-    'stok' => (int) $stok,
+    'stok' => (int)$stok,
     'kategori' => $kategori,
-];
+]);
 
 $_SESSION['flash'] = [
     'type' => 'success',
