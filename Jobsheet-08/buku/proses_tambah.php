@@ -40,7 +40,7 @@ if (!empty($errors)) {
     exit;
 }
 
-require __DIR__ . '/../includes/koneksi.php';
+require __DIR__ . '/../includes/test_koneksi.php';
 
 $stmt = $pdo->prepare(
     "INSERT INTO buku (judul, pengarang, tahun, isbn, stok, kategori)

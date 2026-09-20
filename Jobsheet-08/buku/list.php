@@ -5,7 +5,7 @@ include __DIR__ . '/../includes/header.php';
 $flash = $_SESSION['flash'] ?? null;
 unset($_SESSION['flash']);
 
-require __DIR__ . '/../includes/koneksi.php';
+require __DIR__ . '/../includes/test_koneksi.php';
 
 $daftarBuku = $pdo->query("SELECT * FROM buku ORDER BY id DESC")->fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -32,6 +32,7 @@ $daftarBuku = $pdo->query("SELECT * FROM buku ORDER BY id DESC")->fetchAll(PDO::
                     <th>Pengarang</th>
                     <th>Tahun</th>
                     <th>Stok</th>
+                    <th>Tanggal Ditambahkan</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
@@ -40,7 +41,7 @@ $daftarBuku = $pdo->query("SELECT * FROM buku ORDER BY id DESC")->fetchAll(PDO::
                 <?php if (empty($daftarBuku)): ?>
 
                     <tr>
-                        <td colspan="5">
+                        <td colspan="6">
                             Belum ada data buku. Silakan tambah lewat menu "Tambah Buku".
                         </td>
                     </tr>
@@ -54,6 +55,7 @@ $daftarBuku = $pdo->query("SELECT * FROM buku ORDER BY id DESC")->fetchAll(PDO::
                             <td><?php echo $buku['pengarang']; ?></td>
                             <td><?php echo $buku['tahun']; ?></td>
                             <td><?php echo $buku['stok']; ?></td>
+                            <td><?php echo $buku['tanggal_ditambahkan'] ?? '-'; ?></td>
                             <td>
                                 <button type="button">Edit</button>
                                 <button type="button" class="btn-hapus">Hapus</button>
