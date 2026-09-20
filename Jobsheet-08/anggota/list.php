@@ -4,7 +4,7 @@ include __DIR__ . '/../includes/header.php';
 
 $flash = $_SESSION['flash'] ?? null;
 unset($_SESSION['flash']);
-require __DIR__ . '/../includes/test_koneksi.php';
+require __DIR__ . '/../includes/koneksi.php';
 
 $daftarAnggota = $pdo->query("SELECT * FROM anggota ORDER BY id DESC")->fetchAll(PDO::FETCH_ASSOC);
 ?>

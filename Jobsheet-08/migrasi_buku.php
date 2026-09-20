@@ -1,8 +1,7 @@
 <?php
 
-require __DIR__ . '/includes/test_koneksi.php';
+require __DIR__ . '/includes/koneksi.php';
 
-// Membaca file JSON
 $file = __DIR__ . '/data/buku.json';
 
 if (!file_exists($file)) {
@@ -16,7 +15,6 @@ if ($dataBuku === null) {
     die("Data JSON tidak bisa dibaca.");
 }
 
-// Query untuk memasukkan data ke database
 $stmt = $pdo->prepare(
     "INSERT INTO buku (judul, pengarang, tahun, isbn, stok, kategori)
      VALUES (:judul, :pengarang, :tahun, :isbn, :stok, :kategori)"

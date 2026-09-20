@@ -27,7 +27,7 @@ if (!empty($errors)) {
     exit;
 }
 
-require __DIR__ . '/../includes/test_koneksi.php';
+require __DIR__ . '/../includes/koneksi.php';
 
 $stmt = $pdo->prepare(
     "INSERT INTO anggota (nama, no_anggota, alamat, no_hp)
