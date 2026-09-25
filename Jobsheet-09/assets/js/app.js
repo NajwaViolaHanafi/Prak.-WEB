@@ -11,7 +11,7 @@ function initNavToggle() {
 
 // ===== Konfirmasi hapus =====
 // Tombol Hapus kini berada di dalam <form class="form-hapus" method="post">
-// yang benar-benar mengirim request DELETE ke server (buku/hapus.php,
+// yang benar-benar mengirim request POST ke server (buku/hapus.php,
 // anggota/hapus.php). Konfirmasi dilakukan pada event "submit" agar bisa
 // dibatalkan (preventDefault) sebelum request terkirim.
 function initHapusConfirm() {
@@ -111,9 +111,25 @@ function initValidasiForm() {
     });
 }
 
+// ===== Konfirmasi sebelum Update =====
+function initUpdateConfirm() {
+    const forms = document.querySelectorAll("#form-edit");
+
+    forms.forEach(function (form) {
+        form.addEventListener("submit", function (e) {
+            const yakin = confirm("Yakin ingin menyimpan perubahan data ini?");
+
+            if (!yakin) {
+                e.preventDefault();
+            }
+        });
+    });
+}
+
 document.addEventListener("DOMContentLoaded", function () {
     initNavToggle();
     initHapusConfirm();
+    initUpdateConfirm();
     initTableFilter();
     initValidasiForm();
 });
