@@ -7,13 +7,13 @@
 
 body {
     font-family: "Segoe UI", Arial, sans-serif;
-    color: #3d3d3d;
-    background-color: #fff5f9;
+    color: #2b2b2b;
+    background-color: #f5f6f8;
     line-height: 1.5;
 }
 
 a {
-    color: #d94f83;
+    color: #1d5b8a;
     text-decoration: none;
 }
 
@@ -23,7 +23,7 @@ a:hover {
 
 /* ===== Header & Navbar (Flexbox) ===== */
 header {
-    background-color: #d94f83;
+    background-color: #1d5b8a;
     color: #fff;
     padding: 1rem 1.5rem;
     display: flex;
@@ -47,6 +47,17 @@ header nav a {
     font-weight: 500;
 }
 
+auth-status {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.auth-status a {
+    color: #fff;
+    font-weight: 500;
+}
+
 /* ===== Main Layout ===== */
 main {
     max-width: 1000px;
@@ -59,12 +70,12 @@ section {
     border-radius: 8px;
     padding: 1.5rem;
     margin-bottom: 1.5rem;
-    box-shadow: 0 1px 3px rgba(217, 79, 131, 0.12);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
 section h2 {
     margin-bottom: 1rem;
-    color: #c63f72;
+    color: #1d5b8a;
 }
 
 /* ===== Kartu Statistik (CSS Grid) ===== */
@@ -80,7 +91,7 @@ main section:nth-of-type(2) article {
 }
 
 main section:nth-of-type(2) article {
-    background-color: #fff0f5;
+    background-color: #eef4fa;
     border-radius: 8px;
     padding: 1.25rem;
     text-align: center;
@@ -88,14 +99,14 @@ main section:nth-of-type(2) article {
 
 main section:nth-of-type(2) article h3 {
     font-size: 0.95rem;
-    color: #8a6675;
+    color: #55677a;
     margin-bottom: 0.5rem;
 }
 
 main section:nth-of-type(2) article p {
     font-size: 1.8rem;
     font-weight: 700;
-    color: #d94f83;
+    color: #1d5b8a;
 }
 
 /* ===== Tabel ===== */
@@ -104,23 +115,24 @@ table {
     border-collapse: collapse;
 }
 
-th, td {
+th,
+td {
     text-align: left;
     padding: 0.65rem 0.75rem;
-    border-bottom: 1px solid #f0d8e2;
+    border-bottom: 1px solid #e2e6ea;
 }
 
 thead {
-    background-color: #d94f83;
+    background-color: #1d5b8a;
     color: #fff;
 }
 
 tbody tr:nth-child(even) {
-    background-color: #fff8fa;
+    background-color: #f7f9fb;
 }
 
 tbody tr:hover {
-    background-color: #fff0f5;
+    background-color: #eef4fa;
 }
 
 td button {
@@ -133,12 +145,12 @@ td button {
 }
 
 td button:first-of-type {
-    background-color: #f3a6bf;
+    background-color: #f0ad4e;
     color: #fff;
 }
 
 td button:last-of-type {
-    background-color: #d95375;
+    background-color: #d9534f;
     color: #fff;
 }
 
@@ -159,13 +171,13 @@ form select {
     width: 100%;
     max-width: 400px;
     padding: 0.55rem 0.7rem;
-    border: 1px solid #e3b8c8;
+    border: 1px solid #cdd4da;
     border-radius: 4px;
     font-size: 1rem;
 }
 
 form button[type="submit"] {
-    background-color: #d94f83;
+    background-color: #1d5b8a;
     color: #fff;
     border: none;
     padding: 0.6rem 1.5rem;
@@ -175,14 +187,14 @@ form button[type="submit"] {
 }
 
 form button[type="submit"]:hover {
-    background-color: #b93768;
+    background-color: #164869;
 }
 
 /* ===== Footer ===== */
 footer {
     text-align: center;
     padding: 1.25rem;
-    color: #9a7d89;
+    color: #7a8794;
     font-size: 0.9rem;
 }
 
@@ -210,8 +222,8 @@ footer {
 }
 
 .flash-success {
-    background-color: #fce4ec;
-    color: #8e3154;
+    background-color: #d4edda;
+    color: #155724;
 }
 
 .flash-error {
@@ -222,7 +234,7 @@ footer {
 /* ===== Pesan Error Validasi ===== */
 .error {
     display: block;
-    color: #d95375;
+    color: #d9534f;
     font-size: 0.85rem;
     margin-top: 0.25rem;
 }
@@ -236,7 +248,7 @@ footer {
     width: 100%;
     max-width: 320px;
     padding: 0.5rem 0.75rem;
-    border: 1px solid #e3b8c8;
+    border: 1px solid #cdd4da;
     border-radius: 4px;
 }
 
