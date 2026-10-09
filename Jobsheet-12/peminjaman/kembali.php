@@ -9,7 +9,7 @@ unset($_SESSION['flash']);
 
 $keyword = trim($_GET['q'] ?? '');
 
-$sqlDasar = "SELECT p.id, b.judul, a.nama, p.tanggal_pinjam
+$sqlDasar = "SELECT p.id, b.judul, a.nama, a.no_hp, p.tanggal_pinjam, p.tanggal_jatuh_tempo
              FROM peminjaman p
              JOIN buku b ON b.id = p.buku_id
              JOIN anggota a ON a.id = p.anggota_id
@@ -23,44 +23,48 @@ if ($keyword !== '') {
 }
 $daftarAktif = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
-        <section>
-            <h2>Pengembalian Buku</h2>
+<section>
+    <h2>Pengembalian Buku</h2>
 
-            <?php if ($flash): ?>
-                <p class="flash flash-<?php echo $flash['type']; ?>"><?php echo e($flash['pesan']); ?></p>
-            <?php endif; ?>
+    <?php if ($flash): ?>
+        <p class="flash flash-<?php echo $flash['type']; ?>"><?php echo e($flash['pesan']); ?></p>
+    <?php endif; ?>
 
-            <div class="search-box">
-                <form method="get" action="kembali.php">
-                    <span>
-                        <label for="search-input">Cari anggota/buku</label><br>
-                        <input type="text" id="search-input" name="q" value="<?php echo e($keyword); ?>" placeholder="Nama anggota atau judul buku...">
-                    </span>
-                    <button type="submit">Cari</button>
-                </form>
-            </div>
+    <div class="search-box">
+        <form method="get" action="kembali.php">
+            <span>
+                <label for="search-input">Cari anggota/buku</label><br>
+                <input type="text" id="search-input" name="q" value="<?php echo e($keyword); ?>" placeholder="Nama anggota atau judul buku...">
+            </span>
+            <button type="submit">Cari</button>
+        </form>
+    </div>
 
-            <div class="table-responsive">
-            <table>
-                <thead>
+    <div class="table-responsive">
+        <table>
+            <thead>
+                <tr>
+                    <th>Anggota</th>
+                    <th>No. HP</th>
+                    <th>Buku</th>
+                    <th>Tgl Pinjam</th>
+                    <th>Jatuh Tempo</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php if (empty($daftarAktif)): ?>
                     <tr>
-                        <th>Anggota</th>
-                        <th>Buku</th>
-                        <th>Tgl Pinjam</th>
-                        <th>Aksi</th>
+                        <td colspan="6">Tidak ada peminjaman aktif.</td>
                     </tr>
-                </thead>
-                <tbody>
-                    <?php if (empty($daftarAktif)): ?>
-                    <tr>
-                        <td colspan="4">Tidak ada peminjaman aktif.</td>
-                    </tr>
-                    <?php else: ?>
-                        <?php foreach ($daftarAktif as $trx): ?>
+                <?php else: ?>
+                    <?php foreach ($daftarAktif as $trx): ?>
                         <tr>
                             <td><?php echo e($trx['nama']); ?></td>
+                            <td><?php echo e($trx['no_hp']); ?></td>
                             <td><?php echo e($trx['judul']); ?></td>
                             <td><?php echo $trx['tanggal_pinjam']; ?></td>
+                            <td><?php echo $trx['tanggal_jatuh_tempo']; ?></td>
                             <td>
                                 <form method="post" action="proses_kembali.php">
                                     <?php echo csrf_field(); ?>
@@ -69,10 +73,10 @@ $daftarAktif = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 </form>
                             </td>
                         </tr>
-                        <?php endforeach; ?>
-                    <?php endif; ?>
-                </tbody>
-            </table>
-            </div>
-        </section>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+            </tbody>
+        </table>
+    </div>
+</section>
 <?php include __DIR__ . '/../includes/footer.php'; ?>
