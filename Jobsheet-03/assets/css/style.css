@@ -22,12 +22,12 @@ a:hover {
     text-decoration: underline;
 }
 
-/* ===== Header & Navbar (Flexbox) ===== */
+/* ===== Header & Navbar ===== */
 
 header {
     background-color: #1d5b8a;
     color: #fff;
-    padding: 1rem;
+    padding: 1rem 1.5rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -57,12 +57,28 @@ header nav a {
     font-weight: 500;
 }
 
+.nav-toggle {
+    display: none;
+}
+
+.nav-toggle-label {
+    display: block;
+    font-size: 1.6rem;
+    color: #fff;
+    cursor: pointer;
+}
+
+.nav-toggle:checked ~ nav {
+    display: block;
+}
+
 /* ===== Main Layout ===== */
 
 main {
     width: 100%;
-    margin: 1.5rem auto;
-    padding: 0 1rem;
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
 }
 
 section {
@@ -74,42 +90,73 @@ section {
 }
 
 section h2 {
-    margin-bottom: 1rem;
+    margin-bottom: 1.25rem;
     color: #1d5b8a;
 }
 
-/* ===== Kartu Statistik (CSS Grid) ===== */
+/* ===== Kartu Statistik ===== */
 
-main section:nth-of-type(2) {
+.ringkasan-container {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 1rem;
 }
 
-main section:nth-of-type(2) h2 {
-    grid-column: 1 / -1;
-}
-
-main section:nth-of-type(2) article {
+.ringkasan-container article {
     background-color: #eef4fa;
     border-radius: 8px;
     padding: 1.25rem;
     text-align: center;
+    min-width: 0;
 }
 
-main section:nth-of-type(2) article h3 {
+.ringkasan-container article h3 {
     font-size: 0.95rem;
     color: #55677a;
     margin-bottom: 0.5rem;
 }
 
-main section:nth-of-type(2) article p {
+.ringkasan-container article p {
     font-size: 1.8rem;
     font-weight: 700;
     color: #1d5b8a;
 }
 
+/* ===== Contoh Kode ===== */
+
+.contoh-kode {
+    width: 100%;
+    min-width: 0;
+}
+
+.code-responsive {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    padding: 1rem;
+    background-color: #fff;
+    border: 1px solid #f0f0f0;
+    border-radius: 6px;
+}
+
+.code-responsive pre {
+    margin: 0;
+    white-space: pre;
+    max-width: 100%;
+}
+
+.code-responsive code {
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 0.9rem;
+    color: #b4235a;
+}
+
 /* ===== Tabel ===== */
+
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+}
 
 table {
     width: 100%;
@@ -154,7 +201,6 @@ td button:last-of-type {
     background-color: #d9534f;
     color: #fff;
 }
-
 
 /* ===== Form ===== */
 
@@ -202,58 +248,17 @@ footer {
     font-size: 0.9rem;
 }
 
-/* ===== Tabel Responsif ===== */
-.table-responsive {
-    overflow-x: auto;
-}
-
-/* ===== Blok Kode Responsif ===== */
-pre {
-    overflow-x: auto;
-    max-width: 100%;
-}
-
-/* ===== Hamburger Menu (checkbox hack) ===== */
-.nav-toggle {
-    display: none;
-}
-
-.nav-toggle-label {
-    display: none;
-    font-size: 1.6rem;
-    color: #fff;
-    cursor: pointer;
-}
-
-/* ===== Mobile-First Responsive ===== */
+/* ===== Responsive Tablet ===== */
 
 @media (min-width: 481px) {
-
-    header {
-        padding: 1rem 1.5rem;
-    }
-
-    main {
-        margin: 2rem auto;
-        padding: 0 1.5rem;
-    }
-
-    section {
-        padding: 1.5rem;
-    }
-
-    main section:nth-of-type(2) {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    form input,
-    form select {
-        max-width: 400px;
+    .ringkasan-container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
 
-@media (min-width: 901px) {
+/* ===== Responsive Desktop ===== */
 
+@media (min-width: 901px) {
     header {
         flex-wrap: nowrap;
     }
@@ -274,14 +279,37 @@ pre {
         display: none;
     }
 
-    main {
-        max-width: 1000px;
-    }
-
-    main section:nth-of-type(2) {
-        grid-template-columns: repeat(3, 1fr);
+    .ringkasan-container {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 }
+
+/* ===== Responsive HP ===== */
+
+@media (max-width: 480px) {
+    main {
+        margin: 1rem auto;
+        padding: 0 0.75rem;
+    }
+
+    section {
+        padding: 1rem;
+    }
+
+    .ringkasan-container {
+        grid-template-columns: 1fr;
+    }
+
+    .code-responsive {
+        padding: 0.75rem;
+    }
+
+    .code-responsive code {
+        font-size: 0.8rem;
+    }
+}
+
+/* ===== Layar Lebar ===== */
 
 @media (min-width: 1400px) {
     main {
