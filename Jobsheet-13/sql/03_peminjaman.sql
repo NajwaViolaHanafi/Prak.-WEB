@@ -7,5 +7,6 @@ CREATE TABLE IF NOT EXISTS peminjaman (
     anggota_id INTEGER NOT NULL REFERENCES anggota(id),
     tanggal_pinjam DATE NOT NULL DEFAULT CURRENT_DATE,
     tanggal_kembali DATE,
+    tanggal_jatuh_tempo DATE NOT NULL DEFAULT (CURRENT_DATE + INTERVAL '14 days'),
     status VARCHAR(20) NOT NULL DEFAULT 'dipinjam'
 );

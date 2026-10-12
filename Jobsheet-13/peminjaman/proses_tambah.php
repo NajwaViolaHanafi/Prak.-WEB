@@ -23,14 +23,15 @@ try {
     $pdo->beginTransaction();
 
     // Cek apakah anggota memiliki peminjaman aktif yang terlambat lebih dari 14 hari
+
     $stmt = $pdo->prepare("
-        SELECT id
-        FROM peminjaman
-        WHERE anggota_id = :anggota_id
-          AND status = 'dipinjam'
-          AND CURRENT_DATE - tanggal_pinjam > 14
-        LIMIT 1
-    ");
+    SELECT id
+    FROM peminjaman
+    WHERE anggota_id = :anggota_id
+      AND status = 'dipinjam'
+      AND tanggal_jatuh_tempo < CURRENT_DATE - INTERVAL '14 days'
+    LIMIT 1
+");
 
     $stmt->execute([
         ':anggota_id' => $anggota_id

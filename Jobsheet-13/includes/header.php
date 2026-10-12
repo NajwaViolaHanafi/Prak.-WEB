@@ -7,6 +7,7 @@ require_once __DIR__ . '/helpers.php';
 require_once __DIR__ . '/csrf.php';
 
 $sudahLogin = isset($_SESSION['user_id']);
+$isAdmin = isset($_SESSION['role']) && $_SESSION['role'] === 'admin';
 
 // Prefix relatif ke root proyek ini
 $__jobsheetRoot = dirname(__DIR__);
@@ -44,10 +45,11 @@ $base = $__rel === '' ? '' : str_repeat('../', substr_count($__rel, '/') + 1);
 
                 <?php if ($sudahLogin): ?>
 
-                    <li>
-                        <a href="<?php echo $base; ?>buku/tambah.php">Tambah Buku</a>
-                    </li>
-
+                    <?php if ($isAdmin): ?>
+                        <li>
+                            <a href="<?php echo $base; ?>buku/tambah.php">Tambah Buku</a>
+                        </li>
+                    <?php endif; ?>
                     <li>
                         <a href="<?php echo $base; ?>anggota/list.php">Daftar Anggota</a>
                     </li>

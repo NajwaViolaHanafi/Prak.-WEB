@@ -23,6 +23,14 @@ if (!isset($_SESSION['login_attempts'])) {
 if (!isset($_SESSION['login_attempts'][$username])) {
     $_SESSION['login_attempts'][$username] = 0;
 }
+if ($_SESSION['login_attempts'][$username] >= 3) {
+    $_SESSION['flash'] = [
+        'type' => 'error',
+        'pesan' => 'Login gagal 3 kali. Silakan coba lagi setelah session direset.'
+    ];
+    header('Location: login.php');
+    exit;
+}
 
 $stmt = $pdo->prepare("SELECT * FROM users WHERE username = :username");
 $stmt->execute(['username' => $username]);

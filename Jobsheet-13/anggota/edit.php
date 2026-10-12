@@ -9,7 +9,6 @@ if ($_SESSION['role'] !== 'admin') {
     exit;
 }
 $page_title = "Edit Anggota";
-include __DIR__ . '/../includes/header.php';
 require __DIR__ . '/../includes/koneksi.php';
 
 $flash = $_SESSION['flash'] ?? null;
@@ -20,6 +19,7 @@ if (!$id) {
     header('Location: list.php');
     exit;
 }
+include __DIR__ . '/../includes/header.php';
 
 $stmt = $pdo->prepare("SELECT * FROM anggota WHERE id = :id");
 $stmt->execute(['id' => $id]);
